@@ -51,85 +51,17 @@ pgcli -h localhost -U your_username -d course_assistant -W
 # ctrl+d to exit
 ```
 
-## 4.6 Capturing user feedback
+Now you can use the streamlit to use.
 
-<a href="https://www.youtube.com/watch?v=XapKKBUMQ4M&list=PL3MmuxUbc_hIB4fSqLy_0AfTjVLpgjV3R">
-  <img src="https://markdown-videos-api.jorgenkh.no/youtube/XapKKBUMQ4M">
-</a>
+You can also use grafana to monitor the llm, before you run it, you can run
 
-> You can see the prompts and the output from claude [here](code.md)
-
-Content
-
-* Adding +1 and -1 buttons
-* Setting up a postgres database
-* Putting everything in docker compose
-
-```bash
-pip install pgcli
-pgcli -h localhost -U your_username -d course_assistant -W
+```python
+python generate_data.py
 ```
 
-
-Links:
-
-* [final code](app/)
-* [intermediate code from claude](code.md#46-capturing-user-feedback)
+to pretend many questions are save in database.
 
 
-### 4.6.2 Capturing user feedback: part 2 
-
-<a href="https://www.youtube.com/watch?v=BG8MlbidatA&list=PL3MmuxUbc_hIB4fSqLy_0AfTjVLpgjV3R">
-  <img src="https://markdown-videos-api.jorgenkh.no/youtube/BG8MlbidatA">
-</a>
-
-* adding vector search
-* adding OpenAI
-
-Links:
-
-* [final code](app/)
-* [intermediate code from claude](code.md#462-capturing-user-feedback-part-2)
-
-
-## 4.7 Monitoring the system
-
-<a href="https://www.youtube.com/watch?v=BQN0TOi2Rew&list=PL3MmuxUbc_hIB4fSqLy_0AfTjVLpgjV3R">
-  <img src="https://markdown-videos-api.jorgenkh.no/youtube/BQN0TOi2Rew">
-</a>
-
-* Setting up Grafana
-* Tokens and costs
-* QA relevance
-* User feedback
-* Other metrics
-
-Links:
-
-* [final code](app/)
-* [SQL queries for Grafana](grafana.md)
-* [intermediate code from claude](code.md#47-monitoring)
-
-### 4.7.2 Extra Grafana video
-
-<a href="https://www.youtube.com/watch?v=qGFAX5ra1G8&list=PL3MmuxUbc_hIB4fSqLy_0AfTjVLpgjV3R">
-  <img src="https://markdown-videos-api.jorgenkh.no/youtube/qGFAX5ra1G8">
-</a>
-
-* Grafana variables
-* Exporting and importing dashboards
-
-Links:
-
-* [SQL queries for Grafana](grafana.md)
-* [Grafana dashboard](dashboard.json)
-
-## Homework
-
-See [here](../cohorts/2024/04-monitoring/homework.md)
-
-
-## Extra resources
 
 ### Overview of the module
 
