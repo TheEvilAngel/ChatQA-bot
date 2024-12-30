@@ -1,6 +1,6 @@
-# Module 4: Evaluation and Monitoring
+# CHATQA-bot
 
-In this module, we will learn how to evaluate and monitor our LLM and RAG system.
+This is a RAG system to answer the question according to the dataset you have uploaded according to llm-zoomcamp
 
 In the evaluation part, we assess the quality of our entire RAG
 system before it goes live.
@@ -9,83 +9,47 @@ In the monitoring part, we collect, store and visualize
 metrics to assess the answer quality of a deployed LLM. We also
 collect chat history and user feedback.
 
+# Quick start
 
-## 4.1 Introduction to monitoring answer quality 
+To run the app, first you need to set your openai key in `prep.py`, then pull the docker images, using:
 
-<a href="https://www.youtube.com/watch?v=OWqinqemCmk&list=PL3MmuxUbc_hIB4fSqLy_0AfTjVLpgjV3R">
-  <img src="https://markdown-videos-api.jorgenkh.no/youtube/OWqinqemCmk">
-</a>
+```python
+cd app
+pip install -r requirement.txt
+docker-compose up
+```
 
-* Why monitoring LLM systems?
-* Monitoring answer quality of LLMs 
-* Monitoring answer quality with user feedback
-* What else to monitor, that is not covered by this module? 
+After everything is done, you need to pull `ollama-phi3`:
 
+```python
+docker exec -it ollama bash
+> ollama pull phi3
+> exit
 
-## 4.2 Offline vs Online (RAG) evaluation
+#  or this way
+docker-compose exec ollama ollama pull phi3
+```
 
-<a href="https://www.youtube.com/watch?v=yTKGSqkhgI4&list=PL3MmuxUbc_hIB4fSqLy_0AfTjVLpgjV3R">
-  <img src="https://markdown-videos-api.jorgenkh.no/youtube/yTKGSqkhgI4">
-</a>
+Then you are prepared.
 
-* Modules recap
-* Online vs offline evaluation
-* Offline evaluation metrics 
+```python
+python prep.py
+```
 
+When you just want to init the database, not for index the data, you can comment from `<start>` to `<end>` in the `prep.py`.
 
-## 4.3 Generating data for offline RAG evaluation
+Then you can check the details in database using:
 
-<a href="https://www.youtube.com/watch?v=yTO5sRw6x78&list=PL3MmuxUbc_hIB4fSqLy_0AfTjVLpgjV3R">
-  <img src="https://markdown-videos-api.jorgenkh.no/youtube/yTO5sRw6x78">
-</a>
+```python
+pgcli -h localhost -U your_username -d course_assistant -W
+# password is in .env 'POSTGRES_PASSWORD'
 
-Links:
+\l # to see the list of database
+\c course_assistant 
+\dt # to see the table
 
-* [notebook](offline-rag-evaluation.ipynb)
-* [results-gpt4o.csv](data/results-gpt4o.csv) (answers from GPT-4o)
-* [results-gpt35.csv](data/results-gpt35.csv) (answers from GPT-3.5-Turbo)
-
-
-## 4.4 Offline RAG evaluation: cosine similarity
-
-<a href="https://www.youtube.com/watch?v=LlXclbD3pms&list=PL3MmuxUbc_hIB4fSqLy_0AfTjVLpgjV3R">
-  <img src="https://markdown-videos-api.jorgenkh.no/youtube/LlXclbD3pms">
-</a>
-
-Content
-
-* A->Q->A' cosine similarity
-* Evaluating gpt-4o
-* Evaluating gpt-3.5-turbo
-* Evaluating gpt-4o-mini
-
-Links:
-
-* [notebook](offline-rag-evaluation.ipynb)
-* [results-gpt4o-cosine.csv](data/results-gpt4o-cosine.csv) (answers with cosine calculated from GPT-4o)
-* [results-gpt35-cosine.csv](data/results-gpt35-cosine.csv) (answers with cosine calculated from GPT-3.5-Turbo)
-* [results-gpt4o-mini.csv](data/results-gpt4o-mini.csv) (answers from GPT-4o-mini)
-* [results-gpt4o-mini-cosine.csv](data/results-gpt4o-mini-cosine.csv) (answers with cosine calculated from GPT-4o-mini)
-
-
-## 4.5 Offline RAG evaluation: LLM as a judge
-
-<a href="https://www.youtube.com/watch?v=IB6jePK1s58&list=PL3MmuxUbc_hIB4fSqLy_0AfTjVLpgjV3R">
-  <img src="https://markdown-videos-api.jorgenkh.no/youtube/IB6jePK1s58">
-</a>
-
-* LLM as a judge
-* A->Q->A' evaluation
-* Q->A evaluation
-
-
-Links:
-
-* [notebook](offline-rag-evaluation.ipynb)
-* [evaluations-aqa.csv](data/evaluations-aqa.csv) (A->Q->A evaluation results)
-* [evaluations-qa.csv](data/evaluations-qa.csv) (Q->A evaluation results)
-https://youtu.be/
-
+# ctrl+d to exit
+```
 
 ## 4.6 Capturing user feedback
 
@@ -171,9 +135,4 @@ See [here](../cohorts/2024/04-monitoring/homework.md)
 
 ![image](https://github.com/user-attachments/assets/0c5e932b-4fca-4d51-8b1c-93f4600861dc)
 
-https://www.loom.com/share/1dd375ec4b0d458fabdfc2b841089031
 
-# Notes
-
-* [Notes by slavaheroes](https://github.com/slavaheroes/llm-zoomcamp/blob/homeworks/04-monitoring/notes.md)
-* Did you take notes? Add them above this line (Send a PR with *links* to your notes)
